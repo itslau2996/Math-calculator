@@ -1,35 +1,14 @@
-import math
 import numpy as np
 import matplotlib.pyplot as plt
+from sympy import *
+from Functions import add, subtract, multiply, divide, pythagoras, choices
 
-
-def add(p, q): return p + q
-
-
-def subtract(p, q): return p - q
-
-
-def multiply(p, q): return p * q
-
-
-def divide(p, q): return p / q
-
-
-def pythagoras(p, q): return math.sqrt(p ** 2 + q ** 2)
-
-
-print("Please select the operation.")
-print("a. Add")
-print("b. Subtract")
-print("c. Multiply")
-print("d. Divide")
-print("e. Pythagoras")
-print("f. Graphs, drawing")
-print("g. Graphs, finding Y")
+choices()
 
 choice = input("Please enter choice: ")
 sums = [choice != 'f',
-        choice != 'g']
+        choice != 'g',
+        choice != 'h']
 
 if all(sums):
     num_1 = float(input("Please enter the first number: "))
@@ -58,8 +37,8 @@ elif choice == 'f':
     # X but squared for formulas 1 and 3
     num_x = x ** 2
     if eq == 1:
-        m = float(input('m'))
-        b = float(input('b'))
+        m = float(input('m: '))
+        b = float(input('b: '))
         print(m, b)
         y = m * x + b
         print(y)
@@ -67,8 +46,8 @@ elif choice == 'f':
         plt.grid(color='black', linewidth=1)
         plt.show()
     if eq == 2:
-        a = float(input('a'))
-        c = float(input('c'))
+        a = float(input('a: '))
+        c = float(input('c: '))
         print(a, c)
         y = a * num_x + c
         print(y)
@@ -76,9 +55,9 @@ elif choice == 'f':
         plt.grid(color='black', linewidth=1)
         plt.show()
     if eq == 3:
-        a = float(input('a'))
-        b = float(input('b'))
-        c = float(input('c'))
+        a = float(input('a: '))
+        b = float(input('b: '))
+        c = float(input('c: '))
         print(a, b, c)
         y = a * num_x + b * x + c
         print(y)
@@ -87,7 +66,6 @@ elif choice == 'f':
         plt.show()
     else:
         print('\n')
-
 
 elif choice == 'g':
     print('equation types')
@@ -100,9 +78,9 @@ elif choice == 'g':
     xas = np.array([-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6])
     num_xas = xas ** 2
     if eq == 1:
-        m = float(input('m'))
-        b = float(input('b'))
-        x = float(input('x'))
+        m = float(input('m: '))
+        b = float(input('b: '))
+        x = float(input('x: '))
         y = m * x + b
         yas = m * xas + b
         print('y = ', m, '*', x, '+', b)
@@ -113,9 +91,9 @@ elif choice == 'g':
         plt.show()
 
     if eq == 2:
-        a = float(input('a'))
-        c = float(input('c'))
-        x = float(input('x'))
+        a = float(input('a: '))
+        c = float(input('c: '))
+        x = float(input('x: '))
         num_x = x ** 2
         y = a * num_x + c
         yas = a * num_xas + c
@@ -127,10 +105,10 @@ elif choice == 'g':
         plt.show()
 
     if eq == 3:
-        a = float(input('a'))
-        b = float(input('b'))
-        c = float(input('c'))
-        x = float(input('x'))
+        a = float(input('a: '))
+        b = float(input('b: '))
+        c = float(input('c: '))
+        x = float(input('x: '))
         num_x = x ** 2
         y = a * num_x + b * x + c
         yas = a * num_xas + b * xas + c
@@ -141,4 +119,51 @@ elif choice == 'g':
         plt.grid(color='black', linewidth=1)
         plt.show()
     else:
-        print("\n This isn't an equation ")
+        print("\n This isn't an valid equation ")
+
+elif choice == 'h':
+    print('equation types')
+    print('1) y=mx+b')
+    print('2) y=ax^2 + c')
+    print('3) y=ax^2 + bx + c')
+
+    eq = int(input('equation type number: '))
+
+    xas = np.array([-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6])
+    num_xas = xas ** 2
+    if eq == 1:
+        m = float(input('m: '))
+        b = float(input('b: '))
+        y = float(input('y: '))
+        x = symbols('x')
+        equ = Eq(m * x + b, y)
+        xans = solve(equ, x)
+        print(xans)
+        yas = m * xas + b
+        plt.plot(xas, yas)
+        plt.plot(xans, y, 'o')
+        plt.grid(color='black', linewidth=1)
+        plt.show()
+
+    if eq == 2:
+        a = float(input('a: '))
+        c = float(input('c: '))
+        y = float(input('y: '))
+        yas = a * num_xas + c
+        # TODO Make the function work for the 2nd equation, note that it has to be squared
+        plt.plot(xas, yas)
+        plt.grid(color='black', linewidth=1)
+        plt.show()
+
+    if eq == 3:
+        a = float(input('a: '))
+        b = float(input('b: '))
+        c = float(input('c: '))
+        y = float(input('y: '))
+        yas = a * num_xas + b * xas + c
+        # TODO Make the function work for the 3rd equation, note that it has to be squared
+        plt.plot(xas, yas)
+        plt.grid(color='black', linewidth=1)
+        plt.show()
+    else:
+        print("\n")
