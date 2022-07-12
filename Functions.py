@@ -11,8 +11,14 @@ def choices():
     print("f. Graphs, drawing")
     print("g. Graphs, finding Y")
     print("h. Graphs, finding X")
-    # TODO Graphs = find X = 0
-    # TODO graphs = find Y = 0
+
+
+
+def strike(text):
+    result = ''
+    for c in text:
+        result = result + c + '\u0336'
+    return result
 
 
 def add(p, q): return p + q
@@ -28,3 +34,6 @@ def divide(p, q): return p / q
 
 
 def pythagoras(p, q): return math.sqrt(p ** 2 + q ** 2)
+
+
+

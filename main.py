@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sympy import *
-from Functions import add, subtract, multiply, divide, pythagoras, choices
+from Functions import add, subtract, multiply, divide, pythagoras, choices, strike
 
 choices()
 
@@ -70,8 +70,8 @@ elif choice == 'f':
 elif choice == 'g':
     print('equation types')
     print('1) y=mx+b')
-    print('2) y=ax^2 + c')
-    print('3) y=ax^2 + bx + c')
+    strike('2) y=ax^2 + c')
+    strike('3) y=ax^2 + bx + c')
 
     eq = int(input('equation type number: '))
 
@@ -139,6 +139,7 @@ elif choice == 'h':
         equ = Eq(m * x + b, y)
         xans = solve(equ, x)
         print(xans)
+        xans.replace(',', '.')
         yas = m * xas + b
         plt.plot(xas, yas)
         plt.plot(xans, y, 'o')
@@ -146,24 +147,9 @@ elif choice == 'h':
         plt.show()
 
     if eq == 2:
-        a = float(input('a: '))
-        c = float(input('c: '))
-        y = float(input('y: '))
-        yas = a * num_xas + c
-        # TODO Make the function work for the 2nd equation, note that it has to be squared
-        plt.plot(xas, yas)
-        plt.grid(color='black', linewidth=1)
-        plt.show()
+        print('Sorry, this function is disabled for the time being')
 
     if eq == 3:
-        a = float(input('a: '))
-        b = float(input('b: '))
-        c = float(input('c: '))
-        y = float(input('y: '))
-        yas = a * num_xas + b * xas + c
-        # TODO Make the function work for the 3rd equation, note that it has to be squared
-        plt.plot(xas, yas)
-        plt.grid(color='black', linewidth=1)
-        plt.show()
+        print('Sorry, this function is disabled for the time being')
     else:
         print("\n")
