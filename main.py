@@ -26,6 +26,7 @@ if all(sums):
         print('SQRT(', num_1, '²+', num_2, '²)= ', pythagoras(num_1, num_2))
     else:
         print('This is an invalid input')
+
 elif choice == 'f':
     x = np.array([-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6])
     print('equation types')
@@ -70,8 +71,8 @@ elif choice == 'f':
 elif choice == 'g':
     print('equation types')
     print('1) y=mx+b')
-    strike('2) y=ax^2 + c')
-    strike('3) y=ax^2 + bx + c')
+    print('2) y=ax^2 + c')
+    print('3) y=ax^2 + bx + c')
 
     eq = int(input('equation type number: '))
 
@@ -124,8 +125,8 @@ elif choice == 'g':
 elif choice == 'h':
     print('equation types')
     print('1) y=mx+b')
-    print('2) y=ax^2 + c')
-    print('3) y=ax^2 + bx + c')
+    strike('2) y=ax^2 + c')
+    strike('3) y=ax^2 + bx + c')
 
     eq = int(input('equation type number: '))
 

@@ -34,6 +34,3 @@ def divide(p, q): return p / q
 
 
 def pythagoras(p, q): return math.sqrt(p ** 2 + q ** 2)
-
-
-
