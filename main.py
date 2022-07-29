@@ -1,11 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sympy import *
-from Functions import add, subtract, multiply, divide, pythagoras, choices, strike
+from Functions import add, subtract, multiply, divide, pythagoras, strike
+from easygui import *
+msg = 'Please enter choice: '
+title = 'Math-calc Window'
+choices = ['a. add', 'b. subtract', 'c. multiply', 'd. divide', 'e. pythagoras', 'f. Draw graphs', 'g. Find Y in Graphs', 'h. Find X in Graphs']
 
-choices()
-
-choice = input("Please enter choice: ")
+ChoiceBoxOutput = choicebox(msg, title, choices)
+choice = ChoiceBoxOutput[0]
 sums = [choice != 'f',
         choice != 'g',
         choice != 'h']
