@@ -1,4 +1,5 @@
 import math
+import tkinter.messagebox as tkmb
 
 
 def pythagoras(p, q): return math.sqrt(p ** 2 + q ** 2)
@@ -10,4 +11,6 @@ def outputs(txt):
         file.close()
 
 
-
+def clear_output():
+    with open("output.txt", "w"):
+        tkmb.showinfo("Clear Memory", "Memory Cleared!")
