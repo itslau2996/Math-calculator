@@ -22,7 +22,7 @@ def calc(e):
     sum1 = entry.get()
     answer = eval(sum1)
     res.configure(text="Result: " + str(answer))
-    outputs(str(sum1) + " = " + str(answer))
+    outputs("*calc*" + str(sum1) + " = " + str(answer))
 
 
 # Function for opening memory
