@@ -1,5 +1,5 @@
 from tkinter import *
-from Functions import outputs, clear_output
+from functions import outputs, clear_output
 global entry, res, outputs, clear_output
 
 # Creating the window
@@ -27,7 +27,7 @@ def calc(e):
 
 # Function for opening memory
 def mem():
-    exec(open("outputs.py").read())
+    exec(open("../Memory/outputs.py").read())
 
 
 # Binding enter to above function and packing memory button

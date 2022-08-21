@@ -1,4 +1,4 @@
-from Functions import outputs, clear_output, pythagoras
+from functions import outputs, clear_output, pythagoras
 from math import *
 from tkinter import *
 import re
@@ -35,7 +35,7 @@ def calc(e):
 
 
 def mem():
-    exec(open("outputs.py").read())
+    exec(open("../Memory/outputs.py").read())
 
 
 e2.bind("<Return>", calc)
