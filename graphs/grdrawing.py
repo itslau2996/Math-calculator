@@ -18,7 +18,7 @@ e1 = Entry(gui, width=24)
 e1.grid(column=1, row=0, sticky=E, padx=5, pady=5)
 
 
-# Using SymPy to solve it (at least that's what I hope to do)
+# Using SymPy to solve it
 def graphs():
     import sympy as sp
     from sympy.plotting import plot

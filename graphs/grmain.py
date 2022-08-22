@@ -7,9 +7,9 @@ frame.pack()
 gui.title("graphs")
 
 
-Button(gui, text="Calculator", width=15, relief=RAISED, command=lambda m="A": grint(m)).pack()
-Button(gui, text='Pythagorean theorem', width=15, relief=RAISED, command=lambda m="B": grint(m)).pack()
-Button(gui, text="graphs", width=15, relief=RAISED, command=lambda m="C": grint(m)).pack()
-Button(gui, text="Drawing graphs", width=15, relief=RAISED, command=lambda m="D": grint(m)).pack()
+Button(gui, text="Graphs finding Y", width=15, relief=RAISED, command=lambda m="A": grint(m)).pack()
+Button(gui, text="Graphs finding X", width=15, relief=RAISED, command=lambda m="B": grint(m)).pack()
+# template
+# Button(gui, text="%", width=15, relief=RAISED, command=lambda m="%": grint(m)).pack()
 
 gui.mainloop()
