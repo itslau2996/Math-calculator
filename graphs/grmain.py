@@ -7,8 +7,8 @@ frame.pack()
 gui.title("graphs")
 
 
-Button(gui, text="Graphs finding Y", width=15, relief=RAISED, command=lambda m="A": grint(m)).pack()
-Button(gui, text="Graphs finding X", width=15, relief=RAISED, command=lambda m="B": grint(m)).pack()
+Button(gui, text="Graphs finding Y", width=15, relief=RAISED, command=lambda: grint('A')).pack()
+Button(gui, text="Graphs finding X", width=15, relief=RAISED, command=lambda: grint('B')).pack()
 # template
 # Button(gui, text="%", width=15, relief=RAISED, command=lambda m="%": grint(m)).pack()
 

@@ -1,5 +1,6 @@
 from tkinter import *
-global e1
+from graphs.grfunctions import graphs
+global graphs, e1
 
 # Root window
 gui = Tk()
@@ -17,23 +18,6 @@ wrn.configure(font=('TkDefaultFont', 8))
 e1 = Entry(gui, width=24)
 e1.grid(column=1, row=0, sticky=E, padx=5, pady=5)
 
-
-# Using SymPy to solve it
-def graphs():
-    import sympy as sp
-    from sympy.plotting import plot
-    import matplotlib
-    matplotlib.use('TkAgg')
-    import matplotlib.pyplot as plt
-
-    x, y, z = sp.symbols('x, y, z')
-    sp.init_printing(use_unicode=True)
-    expr = sp.sympify(e1.get())
-    print(expr)
-    p1 = plot(expr, show=False)
-    p1.show()
-
-
-Button(gui, text="Continue", command=graphs).grid(column=1, row=3, sticky=E, padx=5, pady=5)
+Button(gui, text="Continue", command= lambda: graphs(e1.get())).grid(column=1, row=3, sticky=E, padx=5, pady=5)
 
 gui.mainloop()

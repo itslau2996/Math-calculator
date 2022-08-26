@@ -26,9 +26,39 @@ e2.grid(column=1, row=1, sticky=E, padx=5, pady=5)
 
 
 def findx():
-    # TODO REDO THIS
-    raw_expr = e1.get()
+    # Import and defining what symbols are used in the equation
+    import sympy as sp
+    import matplotlib
+    matplotlib.use('TkAgg')
+    import matplotlib.pyplot as plt
+
+    x, y = sp.symbols('x, y')
+
+    # Getting the data from the entries
     raw_x = e2.get()
+    raw_expr = e1.get()
+
+    # Checking for unwanted symbols
+    expr = raw_expr.replace(" ", "")
+    inp_x = float(raw_x.replace(" ", ""))
+    if raw_x.__contains__(','):
+        xmark = raw_x.replace(',', '.')
+    else:
+        xmark = raw_x
+
+    # Making it usable for SymPy
+    spexpr = sp.parse_expr(expr)
+    eq1 = sp.Eq(spexpr, inp_x)
+
+    # Solving
+    y_ans = sp.solve(eq1, x)
+    ymark = y_ans
+    if len(y_ans) == 2: xans = ([xmark, xmark])
+    else: xans = xmark
+    # TODO fix that this is not false, it should be on the line??
+    p1 = sp.plot(expr, show=False, markers=[{'args': [xans, ymark, 'ro']}])
+    p1.show()
+    print('Function finished!')
 
 
 Button(gui, text="Continue", command=findx).grid(column=1, row=3, sticky=E, padx=5, pady=5)
