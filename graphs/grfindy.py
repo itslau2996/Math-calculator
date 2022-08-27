@@ -27,11 +27,10 @@ e2.grid(column=1, row=1, sticky=E, padx=5, pady=5)
 
 def findx():
     # Collecting Data
-    from sympy import symbols, parse_expr, Eq, solve
+    from sympy import symbols, parse_expr, lambdify
     import numpy as np
     import matplotlib.pyplot as plt
     x, y = symbols('x, y')
-    num_x = np.linspace(-2, 3, 100)
     # Getting the data from the entries
     raw_x = e2.get()
     raw_expr = e1.get()
@@ -51,6 +50,21 @@ def findx():
     x_ans = xmark
     print(x_ans, y_ans)
 
+    # MAKING PLOT
+    f = lambdify(x, sp_expr, 'numpy')
+    xas = np.arange(-10, 11, 1)
+    yas = f(xas)
+    print('xmark:', xmark)
+    print('ymark:', y_ans)
+    print('yas:', yas)
+    print('xas:', xas)
+
+    plt.plot(xmark, y_ans, 'o')
+    plt.plot(xas, yas)
+    plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
+
+    plt.show()
+    print('Function finished!')
 
 
     plt.grid(True)
