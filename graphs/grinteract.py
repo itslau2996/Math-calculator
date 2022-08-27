@@ -5,8 +5,7 @@ def grint(m):
     if m == "A":        # finding Y
         exec(open("graphs/grfindy.py").read())
     elif m == "B":      # finding X
-        pass
-        # TODO make this work
+        exec(open("graphs/grfindx.py").read())
 
     elif m == "C":
         pass

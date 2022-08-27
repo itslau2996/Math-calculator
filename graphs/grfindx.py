@@ -11,7 +11,7 @@ gui.columnconfigure(1, weight=3)
 
 # Widgets
 l1 = Label(gui, text='Please enter your formula:')
-l2 = Label(gui, text='Please enter the X-value you want to find the Y-value of:')
+l2 = Label(gui, text='Please enter the Y-value you want to find the X-value of:')
 wrn = Label(gui, text="Example: 3*X**2+5*x+4 (using a y=ax^2+bx+c equation")
 e1 = Entry(gui, width=24)
 e2 = Entry(gui, width=24)
@@ -27,33 +27,44 @@ e2.grid(column=1, row=1, sticky=E, padx=5, pady=5)
 
 def findx():
     # Collecting Data
-    from sympy import symbols, parse_expr, Eq, solve
+    from sympy import symbols, parse_expr, Eq, solve, lambdify
     import numpy as np
     import matplotlib.pyplot as plt
     x, y = symbols('x, y')
-    num_x = np.linspace(-2, 3, 100)
     # Getting the data from the entries
-    raw_x = e2.get()
+    raw_y = e2.get()
     raw_expr = e1.get()
     # Checking for unwanted symbols
     expr = raw_expr.replace(" ", "")
-    inp_x = float(raw_x.replace(" ", ""))
-    if raw_x.__contains__(','):
-        xmark = raw_x.replace(',', '.')
-    else:
-        xmark = raw_x
+    inp_y = float(raw_y.replace(" ", ""))
 
     # SOLVING
     # Making it usable for SymPy
     sp_expr = parse_expr(expr)
+    eq1 = Eq(sp_expr, inp_y)
     # Solving start
-    y_ans = sp_expr.subs(x, xmark)
-    x_ans = xmark
-    print(x_ans, y_ans)
+    x_ans = solve(eq1, x)
+    xmark = x_ans
+    ymark = inp_y
+    if len(x_ans) == 2:
+        ymark = ([inp_y, inp_y])
+    else:
+        pass
 
+    # MAKING PLOT
+    f = lambdify(x, sp_expr, 'numpy')
+    xas = np.arange(-10, 11, 1)
+    yas = f(xas)
+    print('xmark:', xmark)
+    print('ymark:', ymark)
+    print('yas:', yas)
+    print('xas:', xas)
 
+    plt.plot(xmark, ymark, 'o')
+    plt.plot(xas, yas)
+    plt.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
 
-    plt.grid(True)
+    plt.show()
     print('Function finished!')
 
 
